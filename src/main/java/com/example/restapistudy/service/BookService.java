@@ -15,8 +15,8 @@ public class BookService {
     private final BookRepository bookRepository;
 
     @Transactional // 저장 실패시 롤백됨
-    public void saveBook(Book book) {
-        bookRepository.save(book);
+    public Book saveBook(Book book) {
+        return bookRepository.save(book);
     }
 
     @Transactional(readOnly = true) // JPA 변경감지라는 내부 기능 활성화X, update시의 정합성 유지함. insert의 유령데이터 현상 못 막음
@@ -27,7 +27,7 @@ public class BookService {
 
     @Transactional(readOnly = true)
     public List<Book> findAllBook() {
-        return null;
+        return bookRepository.findAll();
     }
 
     @Transactional
