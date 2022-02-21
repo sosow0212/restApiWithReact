@@ -40,7 +40,7 @@ public class BookController {
 
     @CrossOrigin
     @DeleteMapping("/book/{id}")
-    public ResponseEntity<?> delete(@PathVariable("id") Integer id) {
-        return new ResponseEntity<>(bookService.deleteBook(id), HttpStatus.OK);
+    public ResponseEntity<?> deleteById(@PathVariable Integer id) {
+        return new ResponseEntity<>(bookService.deleteBook(id), HttpStatus.OK); // 200
     }
 }
