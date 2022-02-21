@@ -14,9 +14,12 @@ import org.springframework.http.MediaType;
 import org.springframework.mock.http.server.reactive.MockServerHttpRequest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -63,5 +66,21 @@ public class BookControllerUnitTest {
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.title").value("책 제목"))
                 .andDo(MockMvcResultHandlers.print());
+    }
+
+
+    @Test
+    public void findAllTest() throws Exception {
+        // given
+        List<Book> books = new ArrayList<>();
+        books.add(new Book(1, "제목1", "작성자1"));
+        books.add(new Book(2, "제목2", "작성자2"));
+        when(bookService.findAllBook().thenReturn(books));
+
+
+        // when
+        ResultActions resultActions = MockMvc.perform(MockMvcRequestBuilders.get("/book"));
+
+        // then
     }
 }
