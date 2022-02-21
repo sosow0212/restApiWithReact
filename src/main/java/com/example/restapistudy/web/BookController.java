@@ -18,6 +18,7 @@ public class BookController {
         return new ResponseEntity<>(bookService.saveBook(book), HttpStatus.CREATED);
     }
 
+    @CrossOrigin // 외부에서 들어오는 자바스크립트 요청을 허용해줌 (리액트 CORS오류 해결)
     @GetMapping("/book")
     public ResponseEntity<?> findAll() {
         return new ResponseEntity<>(bookService.findAllBook(), HttpStatus.OK); // 200 응답
