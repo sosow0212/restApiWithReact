@@ -11,7 +11,6 @@ const Home = () => {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(1, res);
         setBooks(res);
       }); // 비동기 함수
   }, []); // 빈 배열은 한번만 실행
