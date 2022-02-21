@@ -13,8 +13,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
  BoardRepository = Mock을 이용하여 가짜 객체로 만들 수 있음
 
-
-
  */
 
 
